@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#06111e">
+  <title>Desafio dos Bagres</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="title-block">
+      <div class="eyebrow">🐟 EVENTO PRINCIPAL 🐟</div>
+      <h1>DESAFIO DOS <span>BAGRES</span></h1>
+    </header>
+
+    <section id="setup" class="panel setup">
+      <h2>Escolha seu bagre</h2>
+      <div class="fighters-choice">
+        <button class="fighter-card selected" data-player="0">
+          <img src="imagens/ald.png" alt="Rosto do personagem 1">
+          <strong>Dr. Bagraldo</strong>
+          <small>Jogar com este bagre</small>
+        </button>
+        <div class="versus">VS</div>
+        <button class="fighter-card" data-player="1">
+          <img src="imagens/mat.png" alt="Rosto do personagem 2">
+          <strong>Reprovado no ITA</strong>
+          <small>Jogar com este bagre</small>
+        </button>
+      </div>
+
+      <h2>Escolha o nível</h2>
+      <div class="levels">
+        <button data-level="dificil">Nível Difícil</button>
+        <button class="selected" data-level="intermediario">Nível Intermediário</button>
+        <button data-level="chan" class="chan-level"><span>Nível Chan</span><img src="imagens/chan.png" alt="Chan"></button>
+      </div>
+      <button id="start" class="primary">COMEÇAR A BATALHA</button>
+      <p class="help">Mover: A/D ou ←/→ · Pular: W ou ↑ · Atacar: F ou Espaço · Especial: G</p>
+    </section>
+
+    <section id="arenaPanel" class="panel arena-panel hidden">
+      <div class="hud">
+        <div class="hud-player">
+          <div class="hud-line"><span id="name0">Dr. Bagraldo</span><b id="hpText0">100</b></div>
+          <div class="bar"><div id="hp0" class="fill green"></div></div>
+        </div>
+        <div id="roundStatus" class="round-status">PREPARE-SE!</div>
+        <div class="hud-player right">
+          <div class="hud-line"><span id="name1">Reprovado no ITA</span><b id="hpText1">100</b></div>
+          <div class="bar"><div id="hp1" class="fill green"></div></div>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="game" width="1100" height="560" aria-label="Arena do Desafio dos Bagres"></canvas>
+        <div id="countdown" class="countdown"></div>
+        <div id="powerNotice" class="power-notice hidden" role="status" aria-live="assertive">
+          <span>⚡ SUPER BAGRE ATIVADO! ⚡</span>
+          <strong>PRESSIONE G PARA SOLTAR O KAMEHAMEHA</strong>
+        </div>
+        <div id="result" class="result hidden">
+          <div class="trophy">🏆</div>
+          <h2 id="winnerText">CAMPEÃO!</h2>
+          <button id="rematch" class="primary">REVANCHE</button>
+          <button id="menu" class="secondary">VOLTAR AO MENU</button>
+        </div>
+      </div>
+
+      <div class="mobile-controls">
+        <div>
+          <button data-action="left">◀</button>
+          <button data-action="right">▶</button>
+          <button data-action="jump">PULAR</button>
+        </div>
+        <div>
+          <button class="attack" data-action="attack">SOCO</button>
+          <button class="special" data-action="special">ESPECIAL</button>
+        </div>
+      </div>
+      <button id="quit" class="quit">Encerrar partida</button>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
