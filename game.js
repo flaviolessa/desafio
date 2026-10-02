@@ -161,18 +161,9 @@ function showMenu() {
   hidePowerNotice();
 }
 
-async function startMatch() {
-  await Promise.all(
-    allImages.map((im) =>
-      im.complete
-        ? Promise.resolve()
-        : new Promise((resolve) => {
-            im.onload = resolve;
-          })
-    )
-  );
-
+function startMatch() {
   fighters = [makeFighter(0), makeFighter(1)];
+  
   projectiles = [];
 
   fighterSpeech = [
@@ -1198,6 +1189,11 @@ function drawFighter(fighter) {
   const image =
     faces[fighter.i][expression];
 
+if (
+  image &&
+  image.complete &&
+  image.naturalWidth > 0
+) {
   ctx.drawImage(
     image,
     -55,
@@ -1205,6 +1201,28 @@ function drawFighter(fighter) {
     110,
     110
   );
+} else {
+  ctx.fillStyle = "#64748b";
+
+  ctx.fillRect(
+    -55,
+    headY - 55,
+    110,
+    110
+  );
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "900 16px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText(
+    "CARREGANDO",
+    0,
+    headY
+  );
+}
+  
 
   ctx.restore();
 
